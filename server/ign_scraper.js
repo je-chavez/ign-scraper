@@ -16,9 +16,22 @@ module.exports = function() {
         let $ = cheerio.load(html);
 
         //div.blogrollContainer has a list of news elements on the site
-        $('.blogrollContainer').filter(() => {
-            let data = this;
-            console.log(data);
+        $('.blogrollContainer').filter(function() {
+          let data = this;
+          let children = data.childNodes;
+          let entries = [];
+          //Filtering through the children of the list to remove any unwanted tags and/or divs
+          children.forEach(function(entry) {
+            if ((entry.type && entry.name == 'div')) {
+              entries.push(entry);
+            }
+          });
+          //Remove the first element because it is not a "listElement (article)"
+          entries.shift();
+          entries.forEach(entry => {
+              console.log(entry.childNodes[1].children[1].children[0].attribs.alt);
+              console.log(entry.childNodes[1].children[1].children[0].attribs.src);
+          })
         });
       }
     }
