@@ -4,23 +4,22 @@ const mongoose = require('mongoose'),
 const NewsSchema = new Schema(
   {
     title: {
-        type: String,
-        unique: true,
-        required: true
-      },
-    description: {
-        type: String,
-        unique: true,
-        required: true
-      },
-    link: {
-        type: String,
-        unique: true,
-        required: true
-      },
-    image: {
       type: String,
       unique: true,
+      required: true
+    },
+    description: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    link: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    image: {
+      type: String,
       required: true
     }
   },
