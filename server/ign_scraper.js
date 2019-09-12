@@ -1,5 +1,6 @@
 const request = require('request');
 const cheerio = require('cheerio');
+const News = require('../models/news');
 
 module.exports = function() {
   let url = 'https://www.ign.com/articles?tags=news';
@@ -15,7 +16,7 @@ module.exports = function() {
       if (!error) {
         let $ = cheerio.load(html);
         let articles = [];
-        
+
         //div.blogrollContainer has a list of news elements on the site
         $('.blogrollContainer').filter(function() {
           let data = this;
